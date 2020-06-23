@@ -14,3 +14,7 @@ test-module:
     container_name: indranasaha/testinrepo:firsttry
     depends_on:
       - chrome
+environment:
+      - MODULE=testng.xml
+      - BROWSER=chrome
+      - hubHost=selenium-hub
