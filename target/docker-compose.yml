@@ -11,7 +11,7 @@ services:
       - selenium-hub
 test-module:
     image: 
-    container_name: indranasaha/testinrepo:firsttry
+    container_name: indranasaha/testindrepo:firsttry
     depends_on:
       - chrome
 environment:
