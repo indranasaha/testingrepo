@@ -9,12 +9,23 @@ services:
     image: selenium/node-chrome
     depends_on:
       - selenium-hub
-test-module:
-    image: 
-    container_name: indranasaha/testinrepo:firsttry
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=selenium-hub
+      - HUB_PORT_4444_TCP_PORT=4444
+  firefox:
+    image: selenium/node-firefox
     depends_on:
+      - selenium-hub
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=selenium-hub
+      - HUB_PORT_4444_TCP_PORT=4444
+  test-module:
+    image: vinsdocker/containertest:demo
+    container_name: test-module
+    depends_on:
+      - firefox
       - chrome
-environment:
+    environment:
       - MODULE=testng.xml
-      - BROWSER=chrome
+      - BROWSER=firefox
       - hubHost=selenium-hub
